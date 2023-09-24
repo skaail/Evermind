@@ -1,5 +1,6 @@
 package br.com.evermind.Evermind.Candidato;
 
+import br.com.evermind.Evermind.Vaga.Vaga;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,10 @@ public class CandidatoController {
     @PostMapping
     public Candidato criarCandidato(@RequestBody Candidato candidato){
         return  service.criarCandidato(candidato);
+    }
+
+    @GetMapping("/{id}")
+    public Candidato buscarVagaPorId(@PathVariable Long id){
+        return service.buscarCandidatoPorId(id);
     }
 }

@@ -1,5 +1,6 @@
 package br.com.evermind.Evermind.Candidato;
 
+import br.com.evermind.Evermind.Vaga.Vaga;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,9 @@ public class CandidatoService {
 
     public Candidato criarCandidato(Candidato candidato){
         return repository.save(candidato);
+    }
+
+    public Candidato buscarCandidatoPorId(Long id){
+        return repository.findById(id).orElse(null);
     }
 }
