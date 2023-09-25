@@ -14,16 +14,19 @@ public class VagaController {
     private VagaService service;
 
     @GetMapping
+    @CrossOrigin(origins = "*")
     public List<Vaga> listarCandidatos(){
         return service.listarVagas();
     }
 
     @PostMapping
+    @CrossOrigin(origins = "*")
     public Vaga criarCandidato(@RequestBody Vaga vaga){
         return  service.criarVaga(vaga);
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "*")
     public Vaga buscarVagaPorId(@PathVariable Long id){
         return service.buscarVagaPorId(id);
     }
