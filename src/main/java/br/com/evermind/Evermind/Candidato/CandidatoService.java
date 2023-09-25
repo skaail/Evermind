@@ -24,7 +24,5 @@ public class CandidatoService {
         return repository.findById(id).orElse(null);
     }
 
-    public Candidato login(String email, String senha){
-        return repository.login(email, senha);
-    }
+
 }

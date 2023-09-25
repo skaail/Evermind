@@ -10,6 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface CandidatoRepository extends JpaRepository<Candidato, Long> {
-    @Query("SELECT c from candidato c where c.email =:email and c.senha =:senha")
-    Candidato login(@Param("email") String email, @Param("senha") String senha);
+    List<Candidato> findByEmailAndSenha(String email, String senha);
 }

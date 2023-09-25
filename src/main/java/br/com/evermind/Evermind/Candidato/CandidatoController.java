@@ -2,6 +2,8 @@ package br.com.evermind.Evermind.Candidato;
 
 import br.com.evermind.Evermind.Vaga.Vaga;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.List;
 public class CandidatoController {
     @Autowired
     private CandidatoService service;
+    @Autowired
+    private CandidatoRepository repository;
 
     @GetMapping
     public List<Candidato> listarCandidatos(){
@@ -27,8 +31,9 @@ public class CandidatoController {
         return service.buscarCandidatoPorId(id);
     }
 
-    @PostMapping("/login")
-    public Candidato login(@RequestBody Candidato candidato){
-        return service.login(candidato.getEmail(), candidato.getSenha());
+
+    @GetMapping("/login")
+    public ResponseEntity<List<Candidato>> login(@RequestParam String email, @RequestParam String senha){
+        return  new ResponseEntity<List<Candidato>>(repository.findByEmailAndSenha(email, senha), HttpStatus.OK);
     }
 }
