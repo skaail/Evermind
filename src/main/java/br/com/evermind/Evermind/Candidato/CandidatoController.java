@@ -28,7 +28,7 @@ public class CandidatoController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Candidato candidato){
-        return service.login(candidato);
+    public Candidato login(@RequestBody Candidato candidato){
+        return service.login(candidato.getEmail(), candidato.getSenha());
     }
 }
