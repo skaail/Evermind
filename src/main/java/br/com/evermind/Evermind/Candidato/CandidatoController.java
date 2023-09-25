@@ -33,7 +33,7 @@ public class CandidatoController {
 
 
     @GetMapping("/login")
-    public ResponseEntity<List<Candidato>> login(@RequestParam String email, @RequestParam String senha){
-        return  new ResponseEntity<List<Candidato>>(repository.findByEmailAndSenha(email, senha), HttpStatus.OK);
+    public ResponseEntity<List<Candidato>> login(@RequestBody Candidato candidato){
+        return new ResponseEntity<List<Candidato>>(repository.findByEmailAndSenha(candidato.getEmail(), candidato.getSenha()), HttpStatus.OK);
     }
 }
