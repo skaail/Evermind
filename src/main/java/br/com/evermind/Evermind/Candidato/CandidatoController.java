@@ -26,4 +26,9 @@ public class CandidatoController {
     public Candidato buscarVagaPorId(@PathVariable Long id){
         return service.buscarCandidatoPorId(id);
     }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Candidato candidato){
+        return service.login(candidato);
+    }
 }

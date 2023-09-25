@@ -23,4 +23,8 @@ public class CandidatoService {
     public Candidato buscarCandidatoPorId(Long id){
         return repository.findById(id).orElse(null);
     }
+
+    public String login(Candidato candidato){
+        return repository.login(candidato.getEmail(), candidato.getSenha());
+    }
 }
